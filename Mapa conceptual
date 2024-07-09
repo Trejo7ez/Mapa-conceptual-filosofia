@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mapa Conceptual de Filosofía</title>
+  <script type="text/javascript" src="libs/mxClient.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    #graphContainer {
+      width: 100%;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <div id="graphContainer"></div>
+
+  <script type="text/javascript">
+    function main(container) {
+      if (!mxClient.isBrowserSupported()) {
+        mxUtils.error('Browser is not supported!', 200, false);
+      } else {
+        const graph = new mxGraph(container);
+        new mxRubberband(graph);
+
+        const parent = graph.getDefaultParent();
+        graph.getModel().beginUpdate();
+        try {
+          const philosophy = graph.insertVertex(parent, null, 'Filosofía', 300, 20, 100, 50);
+          const concept = graph.insertVertex(parent, null, 'Concepto', 100, 100, 100, 50);
+          const questions = graph.insertVertex(parent, null, 'Preguntas Filosóficas', 300, 100, 150, 50);
+          const serenity = graph.insertVertex(parent, null, 'Serenidad de Heidegger', 500, 100, 150, 50);
+          const origins = graph.insertVertex(parent, null, 'Orígenes de la Filosofía', 700, 100, 150, 50);
+          const limitSituations = graph.insertVertex(parent, null, 'Situaciones Límite', 900, 100, 150, 50);
+
+          const rational = graph.insertVertex(parent, null, 'Racional', 100, 200, 100, 50);
+          const critical = graph.insertVertex(parent, null, 'Crítica', 100, 250, 100, 50);
+          const totalizer = graph.insertVertex(parent, null, 'Totalizadora', 100, 300, 100, 50);
+
+          const metaphysics = graph.insertVertex(parent, null, 'Metafísica', 300, 200, 100, 50);
+          const epistemology = graph.insertVertex(parent, null, 'Epistemología', 300, 250, 100, 50);
+          const ethics = graph.insertVertex(parent, null, 'Ética', 300, 300, 100, 50);
+
+          const importance = graph.insertVertex(parent, null, 'Importancia', 500, 200, 100, 50);
+          const reflection = graph.insertVertex(parent, null, 'Reflexión', 500, 250, 100, 50);
+          const authenticity = graph.insertVertex(parent, null, 'Autenticidad', 500, 300, 100, 50);
+
+          const origin = graph.insertVertex(parent, null, 'Origen', 700, 200, 100, 50);
+          const beginning = graph.insertVertex(parent, null, 'Comienzo', 700, 250, 100, 50);
+
+          const death = graph.insertVertex(parent, null, 'Muerte', 900, 200, 100, 50);
+          const suffering = graph.insertVertex(parent, null, 'Sufrimiento', 900, 250, 100, 50);
+          const guilt = graph.insertVertex(parent, null, 'Culpa', 900, 300, 100, 50);
+          const struggle = graph.insertVertex(parent, null, 'Lucha', 900, 350, 100, 50);
+
+          graph.insertEdge(parent, null, '', philosophy, concept);
+          graph.insertEdge(parent, null, '', philosophy, questions);
+          graph.insertEdge(parent, null, '', philosophy, serenity);
+          graph.insertEdge(parent, null, '', philosophy, origins);
+          graph.insertEdge(parent, null, '', philosophy, limitSituations);
+
+          graph.insertEdge(parent, null, '', concept, rational);
+          graph.insertEdge(parent, null, '', concept, critical);
+          graph.insertEdge(parent, null, '', concept, totalizer);
+
+          graph.insertEdge(parent, null, '', questions, metaphysics);
+          graph.insertEdge(parent, null, '', questions, epistemology);
+          graph.insertEdge(parent, null, '', questions, ethics);
+
+          graph.insertEdge(parent, null, '', serenity, importance);
+          graph.insertEdge(parent, null, '', serenity, reflection);
+          graph.insertEdge(parent, null, '', serenity, authenticity);
+
+          graph.insertEdge(parent, null, '', origins, origin);
+          graph.insertEdge(parent, null, '', origins, beginning);
+
+          graph.insertEdge(parent, null, '', limitSituations, death);
+          graph.insertEdge(parent, null, '', limitSituations, suffering);
+          graph.insertEdge(parent, null, '', limitSituations, guilt);
+          graph.insertEdge(parent, null, '', limitSituations, struggle);
+        } finally {
+          graph.getModel().endUpdate();
+        }
+      }
+    }
+
+    const container = document.getElementById('graphContainer');
+    main(container);
+  </script>
+</body>
+</html>
